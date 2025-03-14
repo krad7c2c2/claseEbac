@@ -5,7 +5,7 @@ using UnityEngine;
 public class CrearCuboAwake : MonoBehaviour
 {
 
-
+    public bool valueObject1 = false;
     GameObject objToSpawm;
     Vector3[] vertices = {
             new Vector3 (0,0,0),
@@ -46,10 +46,24 @@ public class CrearCuboAwake : MonoBehaviour
         var boxCollider = objToSpawm.GetComponent<BoxCollider>();
         boxCollider.center = new Vector3(0.5f, 0.5f, 0.5f);
         objToSpawm.AddComponent<MeshRenderer>();
-        var meshRendererMaterial = objToSpawm.GetComponent<MeshRenderer>().material;
-        Color c = new Color(Random.value, Random.value, Random.value);
-        meshRendererMaterial.color =c;
+        //var meshRendererMaterial = objToSpawm.GetComponent<MeshRenderer>().material;
+        //Color c = new Color(Random.value, Random.value, Random.value);
+        //meshRendererMaterial.color =c;
         objToSpawm.transform.position = new Vector3(2f,1f, 1f); ;
+    }
+
+    private void LateUpdate()
+    {
+        var meshRendererMaterial = objToSpawm.GetComponent<MeshRenderer>().material;
+        if (valueObject1)
+        {
+            meshRendererMaterial.color = Color.white;
+            valueObject1 = false;
+        }
+        else {
+            meshRendererMaterial.color = Color.black;
+            valueObject1 = true;
+        }
     }
 
     // Start is called before the first frame update

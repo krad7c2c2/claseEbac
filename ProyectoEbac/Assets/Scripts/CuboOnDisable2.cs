@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrearCuboOnDisable : MonoBehaviour
+public class CrearCuboOnDisable2 : MonoBehaviour
 {
-    public bool valueObject3 = true;
+
     GameObject objToSpawm;
     Vector3[] vertices = {
             new Vector3 (0,0,0),
@@ -35,7 +35,7 @@ public class CrearCuboOnDisable : MonoBehaviour
 
     private void OnEnable()
     {
-        objToSpawm = new GameObject("CuboEnOnEnable");
+        objToSpawm = new GameObject("CuboEnOnEnable2");
         objToSpawm.AddComponent<MeshFilter>();
         var meshFilter = objToSpawm.GetComponent<MeshFilter>().mesh;
         meshFilter.Clear();
@@ -50,31 +50,28 @@ public class CrearCuboOnDisable : MonoBehaviour
         var meshRendererMaterial = objToSpawm.GetComponent<MeshRenderer>().material;
         //Color c = new Color(Random.value, Random.value, Random.value);
         //meshRendererMaterial.color = c;
-        objToSpawm.transform.position = new Vector3(6f, 1f, 1f);
+        objToSpawm.transform.position = new Vector3(10f, 1f, 1f);
     }
 
     private void LateUpdate()
     {
 
-        CrearCuboAwake cuboScript = GetComponent<CrearCuboAwake>();
-        CrearCuboUpdate cuboUpdate = GetComponent<CrearCuboUpdate>();
+        CrearCuboOnDisable cuboScript = GetComponent<CrearCuboOnDisable>();
+        CrearCuboOnDisable1 cuboUpdate = GetComponent<CrearCuboOnDisable1>();
 
         // Ahora puedes acceder a otras propiedades del script si no fueran estáticas
-        bool estado = cuboScript.valueObject1;
-        bool estado2 = cuboUpdate.valueObject2;
+        bool estado = cuboScript.valueObject3;
+        bool estado2 = cuboUpdate.valueObject4;
 
-        //Debug.Log("valor del estado en 1 " + estado );
-      
         var meshRendererMaterial = objToSpawm.GetComponent<MeshRenderer>().material;
-        if (estado && estado2) {
-                meshRendererMaterial.color = Color.white;
-                valueObject3 = true;
-            }
-            else
-            {
-                meshRendererMaterial.color = Color.black;
-                 valueObject3 = false;
-            }
+        if (estado && estado2)
+        {
+            meshRendererMaterial.color = Color.white;
+        }
+        else
+        {
+            meshRendererMaterial.color = Color.black;
+        }
     }
 
 
@@ -101,16 +98,16 @@ public class CrearCuboOnDisable : MonoBehaviour
     }
 
 
-  
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

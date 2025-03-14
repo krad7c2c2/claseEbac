@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CrearCuboUpdate : MonoBehaviour
 {
-
+    public bool valueObject2 = true;
     GameObject objToSpawm;
     Vector3[] vertices = {
             new Vector3 (0,0,0),
@@ -34,12 +34,6 @@ public class CrearCuboUpdate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         objToSpawm = new GameObject("CuboEnUpdate");
         objToSpawm.AddComponent<MeshFilter>();
         var meshFilter = objToSpawm.GetComponent<MeshFilter>().mesh;
@@ -53,8 +47,29 @@ public class CrearCuboUpdate : MonoBehaviour
         boxCollider.center = new Vector3(0.5f, 0.5f, 0.5f);
         objToSpawm.AddComponent<MeshRenderer>();
         var meshRendererMaterial = objToSpawm.GetComponent<MeshRenderer>().material;
-        Color c = new Color(Random.value, Random.value, Random.value);
-        meshRendererMaterial.color = c;
-        objToSpawm.transform.position = new Vector3(4f, 1f, 1f); ;
+        //Color c = new Color(Random.value, Random.value, Random.value);
+        //meshRendererMaterial.color = c;
+        objToSpawm.transform.position = new Vector3(4f, 1f, 1f);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+       
+    }
+
+    private void LateUpdate()
+    {
+        var meshRendererMaterial = objToSpawm.GetComponent<MeshRenderer>().material;
+        if (valueObject2)
+        {
+            meshRendererMaterial.color = Color.white;
+            valueObject2 = false;
+        }
+        else
+        {
+            meshRendererMaterial.color = Color.black;
+            valueObject2 = true;
+        }
     }
 }
