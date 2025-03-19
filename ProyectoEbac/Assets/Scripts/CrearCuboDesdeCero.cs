@@ -33,7 +33,7 @@ public class CrearCuboDesdeCero : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        objToSpawm = new GameObject("NuestroPrimerCubo");
+      /*  objToSpawm = new GameObject("NuestroPrimerCubo");
         objToSpawm.AddComponent<MeshFilter>();
         var meshFilter = objToSpawm.GetComponent<MeshFilter>().mesh;
         meshFilter.Clear();
@@ -47,7 +47,7 @@ public class CrearCuboDesdeCero : MonoBehaviour
         objToSpawm.AddComponent<MeshRenderer>();
         var meshRendererMaterial = objToSpawm.GetComponent<MeshRenderer>().material;
         meshRendererMaterial.color = Color.white;
-        objToSpawm.transform.position = Vector3.one;
+        objToSpawm.transform.position = Vector3.one;*/
 
     }
 

@@ -4,74 +4,29 @@ using UnityEngine;
 
 public class CrearCuboOnDisable : MonoBehaviour
 {
-
-    GameObject objToSpawm;
-    Vector3[] vertices = {
-            new Vector3 (0,0,0),
-             new Vector3 (1,0,0),
-              new Vector3 (1,1,0),
-               new Vector3 (0,1,0),
-                new Vector3 (0,1,1),
-                 new Vector3 (1,1,1),
-                  new Vector3 (1,0,1),
-                   new Vector3 (0,0,1),
-        };
-    int[] triangulos = {
-           0,2,1, //cara1
-           0,3,2,
-           2,3,4, //cara 2
-           2,4,5,
-           1,2,5,//cara3
-           1,5,6,
-           0,7,4,  //cara 4
-           0,4,3,
-           5,4,7, //cara 5
-           5,7,6,
-           0,6,7, //cara 6
-           0,1,6
-    };
-
+    public GameObject PrefabCuboOnEnable;
+    public GameObject PrefabCuboOnDisable;
 
 
     private void OnEnable()
     {
-        objToSpawm = new GameObject("CuboEnOnEnable");
-        objToSpawm.AddComponent<MeshFilter>();
-        var meshFilter = objToSpawm.GetComponent<MeshFilter>().mesh;
-        meshFilter.Clear();
-        meshFilter.vertices = vertices;
-        meshFilter.triangles = triangulos;
-        meshFilter.Optimize();
-        meshFilter.RecalculateNormals(); //asegura el reenderizado correcto
-        objToSpawm.AddComponent<BoxCollider>();
-        var boxCollider = objToSpawm.GetComponent<BoxCollider>();
-        boxCollider.center = new Vector3(0.5f, 0.5f, 0.5f);
-        objToSpawm.AddComponent<MeshRenderer>();
-        var meshRendererMaterial = objToSpawm.GetComponent<MeshRenderer>().material;
+        GameObject tempGameObject = Instantiate<GameObject>(PrefabCuboOnEnable);
+        tempGameObject.name = "CuboOnEnable";
         Color c = new Color(Random.value, Random.value, Random.value);
-        meshRendererMaterial.color = c;
-        objToSpawm.transform.position = new Vector3(8f, 1f, 1f);
+        tempGameObject.GetComponent<MeshRenderer>().material.color = c;
+        Vector3 position = new Vector3(4.5f, 0.5f, 0.5f);
+        tempGameObject.transform.position = position;
     }
 
 
     private void OnDisable()
     {
-        objToSpawm = new GameObject("CuboEnOnDisable");
-        objToSpawm.AddComponent<MeshFilter>();
-        var meshFilter = objToSpawm.GetComponent<MeshFilter>().mesh;
-        meshFilter.Clear();
-        meshFilter.vertices = vertices;
-        meshFilter.triangles = triangulos;
-        meshFilter.Optimize();
-        meshFilter.RecalculateNormals(); //asegura el reenderizado correcto
-        objToSpawm.AddComponent<BoxCollider>();
-        var boxCollider = objToSpawm.GetComponent<BoxCollider>();
-        boxCollider.center = new Vector3(0.5f, 0.5f, 0.5f);
-        objToSpawm.AddComponent<MeshRenderer>();
-        var meshRendererMaterial = objToSpawm.GetComponent<MeshRenderer>().material;
+        GameObject tempGameObject = Instantiate<GameObject>(PrefabCuboOnEnable);
+        tempGameObject.name = "CuboOnDisable";
         Color c = new Color(Random.value, Random.value, Random.value);
-        meshRendererMaterial.color = c;
-        objToSpawm.transform.position = new Vector3(12f, 1f, 1f);
+        tempGameObject.GetComponent<MeshRenderer>().material.color = c;
+        Vector3 position = new Vector3(6.5f,0.5f, 0.5f);
+        tempGameObject.transform.position = position;
     }
 
 
